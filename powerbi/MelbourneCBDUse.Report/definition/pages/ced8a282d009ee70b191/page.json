@@ -4,5 +4,12 @@
   "displayName": "The CBD over the years",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "6c80a196b333615b3414",
+      "target": "d2c5c56b8f432b9e6198",
+      "type": "NoFilter"
+    }
+  ]
 }

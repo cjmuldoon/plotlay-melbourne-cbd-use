@@ -27,11 +27,12 @@
                 }
               },
               "queryRef": "Blocks.key",
-              "nativeQueryRef": "key"
+              "nativeQueryRef": "key",
+              "displayName": "Block"
             }
           ]
         },
-        "Y": {
+        "Value": {
           "projections": [
             {
               "field": {
@@ -45,7 +46,67 @@
                 }
               },
               "queryRef": "Floor.Apartments share",
-              "nativeQueryRef": "Apartments share"
+              "nativeQueryRef": "Apartments share",
+              "displayName": "Apartments share"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "block_name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Blocks.block_name)",
+              "nativeQueryRef": "block_name",
+              "displayName": "Block"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "area_name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Blocks.area_name)",
+              "nativeQueryRef": "area_name",
+              "displayName": "Small area"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Floor"
+                    }
+                  },
+                  "Property": "Apartments m2"
+                }
+              },
+              "queryRef": "Floor.Apartments m2",
+              "nativeQueryRef": "Apartments m2",
+              "displayName": "Apartments (m²)"
             }
           ]
         }
@@ -66,7 +127,70 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Apartments share (custom map: data/geometry/blocks.topojson)'"
+                  "Value": "'Apartments share of floor space, year picked (darker: more)'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "shape": [
+        {
+          "properties": {
+            "datasourceType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'file_upload'"
+                }
+              }
+            },
+            "mapUrl": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            },
+            "map": {
+              "geoJson": {
+                "type": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'packaged'"
+                    }
+                  }
+                },
+                "name": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'blocks.topojson'"
+                    }
+                  }
+                },
+                "content": {
+                  "expr": {
+                    "ResourcePackageItem": {
+                      "PackageName": "RegisteredResources",
+                      "PackageType": 1,
+                      "ItemName": "blocks.topojson"
+                    }
+                  }
+                }
+              }
+            },
+            "projectionEnum": {
+              "expr": {
+                "Literal": {
+                  "Value": "'mercator'"
                 }
               }
             }

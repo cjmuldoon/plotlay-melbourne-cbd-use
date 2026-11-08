@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Blocks.key",
-              "nativeQueryRef": "key"
+              "nativeQueryRef": "key",
+              "displayName": "Block"
             }
           ]
         },
@@ -35,17 +36,23 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Blocks"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "centroid_lat"
                     }
                   },
-                  "Property": "centroid_lat"
+                  "Function": 1
                 }
               },
-              "queryRef": "Blocks.centroid_lat",
-              "nativeQueryRef": "centroid_lat"
+              "queryRef": "Avg(Blocks.centroid_lat)",
+              "nativeQueryRef": "centroid_lat",
+              "displayName": "Latitude"
             }
           ]
         },
@@ -53,17 +60,23 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Blocks"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "centroid_lng"
                     }
                   },
-                  "Property": "centroid_lng"
+                  "Function": 1
                 }
               },
-              "queryRef": "Blocks.centroid_lng",
-              "nativeQueryRef": "centroid_lng"
+              "queryRef": "Avg(Blocks.centroid_lng)",
+              "nativeQueryRef": "centroid_lng",
+              "displayName": "Longitude"
             }
           ]
         },
@@ -81,7 +94,47 @@
                 }
               },
               "queryRef": "Blocks.Homes hotels students change m2",
-              "nativeQueryRef": "Homes hotels students change m2"
+              "nativeQueryRef": "Homes hotels students change m2",
+              "displayName": "Homes, hotels and students change (m²)"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "block_name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Blocks.block_name)",
+              "nativeQueryRef": "block_name",
+              "displayName": "Block"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blocks"
+                    }
+                  },
+                  "Property": "Office change m2"
+                }
+              },
+              "queryRef": "Blocks.Office change m2",
+              "nativeQueryRef": "Office change m2",
+              "displayName": "Office change (m²)"
             }
           ]
         }
@@ -102,7 +155,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Blocks (bubble: apartments, hotels and student rooms gained)'"
+                  "Value": "'Blocks (bubble: apartments, hotels and student rooms gained, 2002 to 2024)'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

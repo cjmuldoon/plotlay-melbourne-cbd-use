@@ -3,10 +3,10 @@
   "name": "a98da022f16677265e46",
   "position": {
     "x": 40,
-    "y": 24,
+    "y": 18,
     "z": 0,
-    "height": 64,
-    "width": 1100,
+    "height": 86,
+    "width": 1500,
     "tabOrder": 0
   },
   "visual": {
@@ -31,7 +31,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Apartments as a share of each block’s floor space, for the year picked.",
+                    "value": "Apartments as a share of each block’s floor space, for the census year picked (2024 to start).",
                     "textStyle": {
                       "fontSize": "11pt",
                       "color": "#5b6573"

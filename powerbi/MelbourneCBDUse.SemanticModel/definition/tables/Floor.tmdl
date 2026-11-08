@@ -1,21 +1,34 @@
 table Floor
 	lineageTag: f3f6d034-3d56-ce88-ce79-58170ed05cb3
 
-	/// Published cells only; held back cells are blank
-	measure 'Office m2' = SUM ( Floor[office] )
+	/// The census year the measures use: the year picked, or the latest year with data when none is
+	measure 'Year shown' = CALCULATE ( MAX ( Floor[census_year] ) )
+		formatString: 0
+		lineageTag: ac263754-e8d0-5fac-babe-81e9253cb8e4
+
+	/// Published cells only; held back cells are blank. One census year
+	measure 'Office m2' =
+			VAR y = [Year shown]
+			RETURN CALCULATE ( SUM ( Floor[office] ), Years[year] = y )
 		formatString: #,0
 		lineageTag: 9d8d8edf-81cc-1791-4ff1-efaff413084e
 
-	measure 'Apartments m2' = SUM ( Floor[residential_apartment] )
+	measure 'Apartments m2' =
+			VAR y = [Year shown]
+			RETURN CALCULATE ( SUM ( Floor[residential_apartment] ), Years[year] = y )
 		formatString: #,0
 		lineageTag: e940db6a-b29d-5350-3ed9-0294d4c87c25
 
-	measure 'Hotels m2' = SUM ( Floor[commercial_accommodation] )
+	measure 'Hotels m2' =
+			VAR y = [Year shown]
+			RETURN CALCULATE ( SUM ( Floor[commercial_accommodation] ), Years[year] = y )
 		formatString: #,0
 		lineageTag: c3cdd927-ccd1-c859-9cc0-50e84c035dcd
 
 	/// Row totals, which include held back cells
-	measure 'All floor space m2' = SUM ( Floor[total_floor_space_in_block] )
+	measure 'All floor space m2' =
+			VAR y = [Year shown]
+			RETURN CALCULATE ( SUM ( Floor[total_floor_space_in_block] ), Years[year] = y )
 		formatString: #,0
 		lineageTag: d8e77d5a-5150-42ed-d191-b782098cd328
 

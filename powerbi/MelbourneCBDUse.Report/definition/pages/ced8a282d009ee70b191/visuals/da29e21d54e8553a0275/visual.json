@@ -3,10 +3,10 @@
   "name": "da29e21d54e8553a0275",
   "position": {
     "x": 40,
-    "y": 24,
+    "y": 18,
     "z": 0,
-    "height": 64,
-    "width": 1800,
+    "height": 86,
+    "width": 1500,
     "tabOrder": 0
   },
   "visual": {
@@ -31,7 +31,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Floor space by use in the 83 CBD blocks, 2002 to 2024 (published cells).",
+                    "value": "Floor space by use in the 83 CBD blocks, 2002 to 2024 (published cells). The cards show the census year picked.",
                     "textStyle": {
                       "fontSize": "11pt",
                       "color": "#5b6573"

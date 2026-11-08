@@ -3,9 +3,9 @@
   "name": "d2c5c56b8f432b9e6198",
   "position": {
     "x": 40,
-    "y": 110,
+    "y": 260,
     "z": 1,
-    "height": 900,
+    "height": 750,
     "width": 1840,
     "tabOrder": 1
   },
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Years.year",
-              "nativeQueryRef": "year"
+              "nativeQueryRef": "year",
+              "displayName": "Census year"
             }
           ]
         },
@@ -45,7 +46,8 @@
                 }
               },
               "queryRef": "Floor.Office m2",
-              "nativeQueryRef": "Office m2"
+              "nativeQueryRef": "Office m2",
+              "displayName": "Office (m²)"
             },
             {
               "field": {
@@ -59,7 +61,8 @@
                 }
               },
               "queryRef": "Floor.Apartments m2",
-              "nativeQueryRef": "Apartments m2"
+              "nativeQueryRef": "Apartments m2",
+              "displayName": "Apartments (m²)"
             },
             {
               "field": {
@@ -73,10 +76,29 @@
                 }
               },
               "queryRef": "Floor.Hotels m2",
-              "nativeQueryRef": "Hotels m2"
+              "nativeQueryRef": "Hotels m2",
+              "displayName": "Hotels (m²)"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Years"
+                  }
+                },
+                "Property": "year"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
       }
     },
     "drillFilterOtherVisuals": true,
@@ -94,7 +116,63 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Office, apartments and hotels, m²'"
+                  "Value": "'Office, apartments and hotels, m², 2002 to 2024'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "3.5e+06D"
                 }
               }
             }

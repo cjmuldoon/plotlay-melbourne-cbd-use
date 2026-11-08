@@ -23,11 +23,12 @@
                       "Entity": "Blocks"
                     }
                   },
-                  "Property": "key"
+                  "Property": "block_name"
                 }
               },
-              "queryRef": "Blocks.key",
-              "nativeQueryRef": "key"
+              "queryRef": "Blocks.block_name",
+              "nativeQueryRef": "block_name",
+              "displayName": "Block"
             }
           ]
         },
@@ -45,7 +46,8 @@
                 }
               },
               "queryRef": "Blocks.Office change m2",
-              "nativeQueryRef": "Office change m2"
+              "nativeQueryRef": "Office change m2",
+              "displayName": "Office change (m²)"
             },
             {
               "field": {
@@ -59,10 +61,29 @@
                 }
               },
               "queryRef": "Blocks.Homes hotels students change m2",
-              "nativeQueryRef": "Homes hotels students change m2"
+              "nativeQueryRef": "Homes hotels students change m2",
+              "displayName": "Homes, hotels and students change (m²)"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Blocks"
+                  }
+                },
+                "Property": "Office change m2"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
       }
     },
     "drillFilterOtherVisuals": true,
@@ -80,7 +101,55 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Change in floor space, m²'"
+                  "Value": "'Change in floor space, m², 2002 to 2024'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
