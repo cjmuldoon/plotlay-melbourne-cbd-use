@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "d2c5c56b8f432b9e6198",
   "position": {
     "x": 40,
@@ -28,7 +28,8 @@
               },
               "queryRef": "Years.year",
               "nativeQueryRef": "year",
-              "displayName": "Census year"
+              "displayName": "Census year",
+              "active": true
             }
           ]
         },
@@ -97,8 +98,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "drillFilterOtherVisuals": true,
