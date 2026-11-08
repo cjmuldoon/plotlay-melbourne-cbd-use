@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Census of Land Use and Employment (CLUE) floor space per block, 2002 to 2024, and CLUE blocks: City of Melbourne Open Data, CC BY 4.0. Blocks keyed in Plotlay (getplotlay.com). Cells for two businesses or fewer are held back by the census and stay blank. Blocks, not buildings.",
+                    "value": "Census of Land Use and Employment (CLUE) floor space per block, 2002 to 2024, and CLUE blocks: City of Melbourne Open Data, CC BY 4.0. Blocks keyed in Plotlay (getplotlay.com). Cells for two businesses or fewer are held back by the census and stay blank. Blocks, not buildings. Map context: ABS ASGS 2021 suburbs (CC BY 4.0), Vicmap Hydro (CC BY 4.0).",
                     "textStyle": {
                       "fontSize": "9pt",
                       "color": "#5b6573"
