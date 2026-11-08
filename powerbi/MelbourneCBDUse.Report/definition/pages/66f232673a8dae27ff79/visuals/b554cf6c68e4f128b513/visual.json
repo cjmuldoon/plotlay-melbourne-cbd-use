@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "b554cf6c68e4f128b513",
+  "position": {
+    "x": 40,
+    "y": 110,
+    "z": 1,
+    "height": 900,
+    "width": 1840,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "azureMap",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blocks"
+                    }
+                  },
+                  "Property": "key"
+                }
+              },
+              "queryRef": "Blocks.key",
+              "nativeQueryRef": "key"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blocks"
+                    }
+                  },
+                  "Property": "centroid_lat"
+                }
+              },
+              "queryRef": "Blocks.centroid_lat",
+              "nativeQueryRef": "centroid_lat"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blocks"
+                    }
+                  },
+                  "Property": "centroid_lng"
+                }
+              },
+              "queryRef": "Blocks.centroid_lng",
+              "nativeQueryRef": "centroid_lng"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blocks"
+                    }
+                  },
+                  "Property": "Homes hotels students change m2"
+                }
+              },
+              "queryRef": "Blocks.Homes hotels students change m2",
+              "nativeQueryRef": "Homes hotels students change m2"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Blocks (bubble: apartments, hotels and student rooms gained)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

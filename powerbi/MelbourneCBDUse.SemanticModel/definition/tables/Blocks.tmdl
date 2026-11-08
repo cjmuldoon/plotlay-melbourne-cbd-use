@@ -1,0 +1,175 @@
+table Blocks
+	lineageTag: 04c4f9f5-95c4-f21d-1de6-5eb07056c15a
+
+	/// Office floor space 2024 less 2002, where both years are published
+	measure 'Office change m2' = SUM ( Blocks[office_change] )
+		formatString: #,0
+		lineageTag: 303babd1-a8ce-72da-2d64-96de7c3f2d6d
+
+	/// Apartments change, plus hotels and student rooms where published
+	measure 'Homes hotels students change m2' = SUM ( Blocks[homes_hotels_students_change] )
+		formatString: #,0
+		lineageTag: d5642042-2c32-8a84-fc72-ee92b70cb0f9
+
+	column key
+		dataType: string
+		lineageTag: 5fc97510-7967-55e5-6159-1edeb85a960a
+		summarizeBy: none
+		sourceColumn: key
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name
+		dataType: string
+		lineageTag: 806ecf96-4f62-deec-6793-ccdf08b5d3ad
+		summarizeBy: none
+		sourceColumn: area_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_name
+		dataType: string
+		lineageTag: 9932dda6-0460-1264-e8f9-0d84d820c363
+		summarizeBy: none
+		sourceColumn: region_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_m2
+		dataType: double
+		formatString: #,0
+		lineageTag: dcba5fe3-0892-074e-1233-760c6a3340fe
+		summarizeBy: none
+		sourceColumn: area_m2
+
+		annotation SummarizationSetBy = Automatic
+
+	column centroid_lat
+		dataType: double
+		lineageTag: e05eae0c-f8e1-08eb-0dba-72623924cf18
+		summarizeBy: none
+		sourceColumn: centroid_lat
+		dataCategory: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column centroid_lng
+		dataType: double
+		lineageTag: a197344d-f38d-42dc-6c7e-0f0add95e8d0
+		summarizeBy: none
+		sourceColumn: centroid_lng
+		dataCategory: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column office_2002
+		dataType: double
+		formatString: #,0
+		lineageTag: 03e2883c-65d9-b589-d2cd-13fff0e79347
+		summarizeBy: none
+		sourceColumn: office_2002
+
+		annotation SummarizationSetBy = Automatic
+
+	column office_2024
+		dataType: double
+		formatString: #,0
+		lineageTag: dff3b865-93c7-5cf2-d2b2-70d16d27e04f
+		summarizeBy: none
+		sourceColumn: office_2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column office_change
+		dataType: double
+		formatString: #,0
+		lineageTag: e0d07d55-1ea2-7cd0-07f8-99710682b12a
+		summarizeBy: none
+		sourceColumn: office_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column apartments_2002
+		dataType: double
+		formatString: #,0
+		lineageTag: fe2b30e9-a89e-cb18-267b-63dcf6d4de14
+		summarizeBy: none
+		sourceColumn: apartments_2002
+
+		annotation SummarizationSetBy = Automatic
+
+	column apartments_2024
+		dataType: double
+		formatString: #,0
+		lineageTag: b53f6e38-02d2-d497-be7c-bf244e4fce59
+		summarizeBy: none
+		sourceColumn: apartments_2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column apartments_change
+		dataType: double
+		formatString: #,0
+		lineageTag: 83d7cdb4-63de-66df-002f-6d33505c4192
+		summarizeBy: none
+		sourceColumn: apartments_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotels_change
+		dataType: double
+		formatString: #,0
+		lineageTag: ccb8ce9c-4320-9345-643a-b2bab8a4644d
+		summarizeBy: none
+		sourceColumn: hotels_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column student_change
+		dataType: double
+		formatString: #,0
+		lineageTag: 7d0f8872-923d-6708-055f-8394f29770d2
+		summarizeBy: none
+		sourceColumn: student_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_change
+		dataType: double
+		formatString: #,0
+		lineageTag: e8f53fca-eda9-7a32-ffb1-a00890e2460c
+		summarizeBy: none
+		sourceColumn: total_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column homes_hotels_students_change
+		dataType: double
+		formatString: #,0
+		lineageTag: 6bef5281-facf-6a87-c088-afd9318149ff
+		summarizeBy: none
+		sourceColumn: homes_hotels_students_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column office_to_living
+		dataType: int64
+		formatString: 0
+		lineageTag: ca48451e-3a86-27e2-8d20-1882c62a058e
+		summarizeBy: none
+		sourceColumn: office_to_living
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Blocks = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(GetFile("geometry/blocks_wkt.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"key", "area_name", "region_name", "area_m2", "centroid_lat", "centroid_lng", "office_2002", "office_2024", "office_change", "apartments_2002", "apartments_2024", "apartments_change", "hotels_change", "student_change", "total_change", "homes_hotels_students_change", "office_to_living"}),
+				    Typed = Table.TransformColumnTypes(Kept, {{"key", type text}, {"area_name", type text}, {"region_name", type text}, {"area_m2", type number}, {"centroid_lat", type number}, {"centroid_lng", type number}, {"office_2002", type number}, {"office_2024", type number}, {"office_change", type number}, {"apartments_2002", type number}, {"apartments_2024", type number}, {"apartments_change", type number}, {"hotels_change", type number}, {"student_change", type number}, {"total_change", type number}, {"homes_hotels_students_change", type number}, {"office_to_living", Int64.Type}}, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

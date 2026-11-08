@@ -1,0 +1,111 @@
+table Floor
+	lineageTag: f3f6d034-3d56-ce88-ce79-58170ed05cb3
+
+	/// Published cells only; held back cells are blank
+	measure 'Office m2' = SUM ( Floor[office] )
+		formatString: #,0
+		lineageTag: 9d8d8edf-81cc-1791-4ff1-efaff413084e
+
+	measure 'Apartments m2' = SUM ( Floor[residential_apartment] )
+		formatString: #,0
+		lineageTag: e940db6a-b29d-5350-3ed9-0294d4c87c25
+
+	measure 'Hotels m2' = SUM ( Floor[commercial_accommodation] )
+		formatString: #,0
+		lineageTag: c3cdd927-ccd1-c859-9cc0-50e84c035dcd
+
+	/// Row totals, which include held back cells
+	measure 'All floor space m2' = SUM ( Floor[total_floor_space_in_block] )
+		formatString: #,0
+		lineageTag: d8e77d5a-5150-42ed-d191-b782098cd328
+
+	measure 'Apartments share' = DIVIDE ( [Apartments m2], [All floor space m2] )
+		formatString: 0.0%
+		lineageTag: a57fad17-65b3-6f8f-34b3-42f416809569
+
+	measure 'Office share' = DIVIDE ( [Office m2], [All floor space m2] )
+		formatString: 0.0%
+		lineageTag: 7d9e5a54-4dee-5618-f1c2-75ca80febc95
+
+	column block_id
+		dataType: string
+		lineageTag: f82128b6-92a5-5269-362c-038649a888ea
+		summarizeBy: none
+		sourceColumn: block_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column census_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1507bb9e-2246-675b-d316-009b22da5876
+		summarizeBy: none
+		sourceColumn: census_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column clue_small_area
+		dataType: string
+		lineageTag: 5ea79eda-526a-9444-0f84-8aa235f4c183
+		summarizeBy: none
+		sourceColumn: clue_small_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column office
+		dataType: double
+		formatString: #,0
+		lineageTag: 0681b792-08b2-6304-101d-b135cafe6170
+		summarizeBy: none
+		sourceColumn: office
+
+		annotation SummarizationSetBy = Automatic
+
+	column residential_apartment
+		dataType: double
+		formatString: #,0
+		lineageTag: 45abeebe-d6ea-1ce8-0c29-fc68a964db28
+		summarizeBy: none
+		sourceColumn: residential_apartment
+
+		annotation SummarizationSetBy = Automatic
+
+	column commercial_accommodation
+		dataType: double
+		formatString: #,0
+		lineageTag: 190d2e4f-fa1f-8925-2a00-3b17bd1f3bac
+		summarizeBy: none
+		sourceColumn: commercial_accommodation
+
+		annotation SummarizationSetBy = Automatic
+
+	column student_accommodation
+		dataType: double
+		formatString: #,0
+		lineageTag: 59f32043-4042-f7fb-5ee9-2d35c0f5eae9
+		summarizeBy: none
+		sourceColumn: student_accommodation
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_floor_space_in_block
+		dataType: double
+		formatString: #,0
+		lineageTag: f7343fc8-4257-7e71-67b7-79d9b6238e13
+		summarizeBy: none
+		sourceColumn: total_floor_space_in_block
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Floor = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(GetFile("clue/floor_space_by_use.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"block_id", "census_year", "clue_small_area", "office", "residential_apartment", "commercial_accommodation", "student_accommodation", "total_floor_space_in_block"}),
+				    Typed = Table.TransformColumnTypes(Kept, {{"block_id", type text}, {"census_year", Int64.Type}, {"clue_small_area", type text}, {"office", type number}, {"residential_apartment", type number}, {"commercial_accommodation", type number}, {"student_accommodation", type number}, {"total_floor_space_in_block", type number}}, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

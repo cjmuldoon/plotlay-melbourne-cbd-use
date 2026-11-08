@@ -1,0 +1,40 @@
+The CBD changing use: office floor space and places to live and stay in the City of Melbourne's census blocks, 2002 to 2024.
+Copyright 2026 Craig Muldoon. Made with Plotlay (https://www.getplotlay.com).
+
+This repository contains code, data we made, and data from the sources below.
+
+CODE
+  The notebook and the Power BI project (its Power Query, DAX and report files) are licensed under the MIT licence
+  (LICENSE).
+
+DATA WE MADE
+  The block shapes in data/geometry/ (with their formula columns), the block names in data/clue/block_names.csv and
+  the charts are licensed under Creative Commons Attribution 4.0 International (LICENSE-DATA). Please credit: "Blocks
+  and charts: Plotlay (getplotlay.com), from City of Melbourne open data". They are made from the sources below, whose
+  credits also apply.
+
+UPSTREAM SOURCES
+
+  City of Melbourne Open Data, data.melbourne.vic.gov.au. Licensed under Creative Commons Attribution 4.0
+  International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/
+    - Floor space per space use for blocks (Census of Land Use and Employment, CLUE), 2002 to 2024
+      https://data.melbourne.vic.gov.au/explore/dataset/floor-space-by-use-by-block/
+    - Blocks for Census of Land Use and Employment (CLUE)
+      https://data.melbourne.vic.gov.au/explore/dataset/blocks-for-census-of-land-use-and-employment-clue/
+    - Road Segment (the street names round each block)
+      https://data.melbourne.vic.gov.au/explore/dataset/road-segment/
+    Changes: the floor space columns office, residential_apartment, commercial_accommodation,
+    student_accommodation and total_floor_space_in_block kept; the blocks taken into Plotlay whole and keyed by
+    block_id; each block named from the streets round it.
+
+  Base map in the Plotlay project and the app screenshots
+    © Commonwealth of Australia (Geoscience Australia), licensed under CC BY 4.0.
+
+NOT INCLUDED
+  Nothing in this repository is derived from OpenStreetMap. No imagery was traced. Nothing here implies endorsement
+  by the City of Melbourne. The census holds back figures for two businesses or fewer; nothing here tries to reveal
+  them.
+
+THIRD-PARTY SOFTWARE
+  The notebook uses pandas, GeoPandas, Shapely and Matplotlib (installed from requirements.txt, each under its own
+  licence).

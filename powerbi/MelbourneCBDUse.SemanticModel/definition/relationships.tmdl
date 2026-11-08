@@ -1,0 +1,7 @@
+relationship fd2bea65-0350-1b75-6e5c-c80fc663ec27
+	fromColumn: Floor.block_id
+	toColumn: Blocks.key
+
+relationship bcc22581-17cf-b52d-1a36-cbb41cd2befc
+	fromColumn: Floor.census_year
+	toColumn: Years.year
