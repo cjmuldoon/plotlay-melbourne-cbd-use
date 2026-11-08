@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "b554cf6c68e4f128b513",
   "position": {
     "x": 40,
@@ -28,55 +28,8 @@
               },
               "queryRef": "Blocks.key",
               "nativeQueryRef": "key",
+              "active": true,
               "displayName": "Block"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Blocks"
-                        }
-                      },
-                      "Property": "centroid_lat"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Avg(Blocks.centroid_lat)",
-              "nativeQueryRef": "centroid_lat",
-              "displayName": "Latitude"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Blocks"
-                        }
-                      },
-                      "Property": "centroid_lng"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Avg(Blocks.centroid_lng)",
-              "nativeQueryRef": "centroid_lng",
-              "displayName": "Longitude"
             }
           ]
         },
@@ -137,45 +90,56 @@
               "displayName": "Office change (m²)"
             }
           ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "centroid_lng"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Blocks.centroid_lng)",
+              "nativeQueryRef": "centroid_lng",
+              "displayName": "Longitude"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blocks"
+                        }
+                      },
+                      "Property": "centroid_lat"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Blocks.centroid_lat)",
+              "nativeQueryRef": "centroid_lat",
+              "displayName": "Latitude"
+            }
+          ]
         }
       }
-    },
-    "drillFilterOtherVisuals": true,
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Blocks (bubble: apartments, hotels and student rooms gained, 2002 to 2024)'"
-                }
-              }
-            },
-            "titleWrap": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Segoe UI Semibold'"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "objects": {
       "mapControls": [
@@ -213,6 +177,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "zoom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.76D"
                 }
               }
             }
@@ -278,6 +249,43 @@
           }
         }
       ]
-    }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Blocks (bubble: apartments, hotels and student rooms gained, 2002 to 2024)'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

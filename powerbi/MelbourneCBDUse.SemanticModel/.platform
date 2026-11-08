@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "MelbourneCBDUse"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f2e7e2de-7c19-4552-a4c8-e27f0861cfbe"
+  }
+}

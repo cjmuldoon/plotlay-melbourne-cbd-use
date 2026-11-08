@@ -1,9 +1,9 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a98da022f16677265e46",
   "position": {
-    "x": 40,
-    "y": 18,
+    "x": 40.64683703115125,
+    "y": 7.8224149283522451,
     "z": 0,
     "height": 91,
     "width": 1500,
@@ -21,10 +21,10 @@
                   {
                     "value": "APARTMENTS BY BLOCK",
                     "textStyle": {
-                      "fontSize": "24pt",
-                      "color": "#163c6e",
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontWeight": "bold"
+                      "fontSize": "24pt",
+                      "color": "#163c6e"
                     }
                   }
                 ]
@@ -34,9 +34,9 @@
                   {
                     "value": "Apartments as a share of each block’s floor space, for the census year picked (2024 to start).",
                     "textStyle": {
+                      "fontFamily": "Segoe UI",
                       "fontSize": "11pt",
-                      "color": "#5b6573",
-                      "fontFamily": "Segoe UI"
+                      "color": "#5b6573"
                     }
                   }
                 ]
