@@ -24,7 +24,7 @@ After **Refresh**, with the **Census year** dropdown on **2024** (as the report 
 
 | Card | Should read |
 |---|---|
-| Office floor space, CBD, m² | 2,833,795 (Power BI may show 2.83M) |
+| Office floor space, CBD, m² | 2,833,795 |
 | Apartment floor space, CBD, m² | 2,276,604 |
 | Hotel floor space, CBD, m² | 427,960 |
 
