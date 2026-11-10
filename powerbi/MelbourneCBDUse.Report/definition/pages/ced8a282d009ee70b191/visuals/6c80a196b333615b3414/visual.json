@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "6c80a196b333615b3414",
   "position": {
-    "x": 1552.7402135231316,
-    "y": 8.5409252669039137,
+    "x": 1552,
+    "y": 4,
     "z": 2,
-    "height": 90.533807829181484,
-    "width": 327.97153024911029,
+    "height": 100,
+    "width": 328,
     "tabOrder": 2
   },
   "visual": {
@@ -28,12 +28,28 @@
               },
               "queryRef": "Years.year",
               "nativeQueryRef": "year",
-              "active": true,
-              "displayName": "Census year"
+              "displayName": "Census year",
+              "active": true
             }
           ]
         }
       }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "objects": {
       "data": [
@@ -149,40 +165,6 @@
           }
         }
       ]
-    },
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2d1725d3995872c85e61",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Years"
-              }
-            },
-            "Property": "year"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
+    }
   }
 }

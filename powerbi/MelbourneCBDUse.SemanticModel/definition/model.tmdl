@@ -7,14 +7,10 @@ model Model
 		returnErrorValuesAsNull
 
 annotation PBI_QueryOrder = ["DataFolder","GetFile","Blocks","Floor","Years"]
-
 annotation __PBI_TimeIntelligenceEnabled = 0
-
-annotation PBI_ProTooling = ["DevMode"]
 
 ref table Blocks
 ref table Floor
 ref table Years
 
 ref cultureInfo en-AU
-
